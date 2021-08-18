@@ -1,0 +1,17 @@
+.login {
+	display: flex;
+}
+.login_welcome {
+	width: 25rem;
+	border: 3px solid red;
+}
+.body_accent {
+	font-weight: 700;
+}
+.login_signin {
+	border: 3px solid yellow;
+}
+.login_buttons {
+	display: flex;
+	flex-direction: column;
+}
