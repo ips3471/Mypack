@@ -1,7 +1,15 @@
 import React from 'react';
+import { Proviers, auth } from '../service/firebase';
 import styles from './login.module.css';
 
-const Login = () => (
+const Login = () => { 
+    const onSocialLogin = (provider: any) => {
+        console.log('click');
+        return auth.signInWithPopup(provider)
+        .then(console.log);
+    }
+
+    return (
     <div className={styles.login}>
         <article className={styles.login_welcome}>
             <h1 className={styles.title}>Welcome to Mypack Account</h1>
@@ -12,11 +20,11 @@ const Login = () => (
         <article className={styles.login_signin}>
             <h2>Sign in to Mypack</h2>
             <div className={styles.login_buttons}>
-                <button className="google">Google</button>
-                <button className="github">Github</button>
+                <button onClick={() => onSocialLogin(Proviers.Google)} className="google">Google</button>
+                <button onClick={() => onSocialLogin(Proviers.Github)} className="github">Github</button>
             </div>
         </article>
     </div>
     );
-
+}
 export default Login;

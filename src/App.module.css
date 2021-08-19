@@ -1,0 +1,19 @@
+@value lavendar from './common/color.module.css';
+* {
+	box-sizing: border-box;
+}
+h1 {
+	font-size: 2rem;
+}
+p {
+	font-size: 1.3rem;
+}
+button {
+	border: none;
+	outline: none;
+	background-color: transparent;
+}
+.App {
+	background-color: lavendar;
+	height: 100vh;
+}
