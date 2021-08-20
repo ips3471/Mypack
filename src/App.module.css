@@ -2,8 +2,23 @@
 * {
 	box-sizing: border-box;
 }
+html {
+	height: 100%;
+}
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	background-color: lavendar;
+}
 h1 {
 	font-size: 2rem;
+}
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 p {
 	font-size: 1.3rem;
@@ -13,7 +28,8 @@ button {
 	outline: none;
 	background-color: transparent;
 }
-.App {
-	background-color: lavendar;
-	height: 100vh;
+
+.App_item {
+	width: 74rem;
+	height: 36rem;
 }

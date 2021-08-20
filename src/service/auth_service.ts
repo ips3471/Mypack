@@ -1,12 +1,26 @@
-import firebaseApp from './firebase';
+import firebase from 'firebase/app';
+import { auth } from './firebase';
+import 'firebase/auth';
 
 
-// class AuthService {
-//   login(provider) {
-//     const authProvider = new firebaseApp.auth[`${provider}AuthProvider`]();
-//     return firebaseApp
-//     .auth().signInWithPopup(authProvider);
-//   }
-// }
+interface IAuthService {
+    login(provider: firebase.auth.AuthProvider): any;
+    logout(): void;
+    onAuthChange(onUserChanged: any): void;
+}
 
-// export default AuthService;
+class AuthService implements IAuthService {
+    login(provider: firebase.auth.AuthProvider) {
+        return auth.signInWithPopup(provider);
+    }
+    logout() {
+        auth.signOut();
+    }
+    onAuthChange(onUserChanged: any) {
+        auth.onAuthStateChanged(user => {
+            onUserChanged(user);
+        })
+    }
+}
+
+export default AuthService;

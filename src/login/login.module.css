@@ -1,17 +1,32 @@
+@value white, lavendar, darkslategray from '../common/color.module.css';
+
 .login {
 	display: flex;
+	align-items: center;
+	height: 100%;
 }
 .login_welcome {
 	width: 25rem;
-	border: 3px solid red;
+	flex: 1 1 30%;
+	height: 100%;
+	text-align: center;
+	background-color: darkslategray;
+	color: white;
 }
 .body_accent {
 	font-weight: 700;
 }
 .login_signin {
-	border: 3px solid yellow;
+	flex: 1 1 10%;
+	height: 100%;
+	background-color: white;
 }
-.login_buttons {
+.login_btns {
 	display: flex;
 	flex-direction: column;
+}
+.login_btn {
+	font-size: 2rem;
+	background-color: white;
+	border: 1px solid black;
 }

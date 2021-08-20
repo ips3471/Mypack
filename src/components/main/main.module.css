@@ -1,0 +1,6 @@
+@value side-padding from '../../common/size.module.css';
+
+.main {
+	display: flex;
+	height: 45rem;
+}

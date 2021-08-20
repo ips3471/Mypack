@@ -1,0 +1,8 @@
+@value ghostwhite, lavendar, darkslategray from '../../common/color.module.css';
+
+.overview {
+	background-color: ghostwhite;
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+	flex: 1 1 5rem;
+}
