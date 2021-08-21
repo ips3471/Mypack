@@ -14,6 +14,7 @@ body {
 }
 h1 {
 	font-size: 2rem;
+	margin: 1rem 1.5rem;
 }
 ul {
 	list-style: none;

@@ -13,6 +13,8 @@ const Login = () => {
         authService.onAuthChange((user: any) => {
             if(!user) {
                 history.push('/');
+            } else {
+                history.push('/main');
             }
         })
     })
