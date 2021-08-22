@@ -9,7 +9,7 @@ const authService = new AuthService();
 export const AuthContext = createContext<any | null>(null);
 
 ReactDOM.render(
-  <React.StrictMode>
+<React.StrictMode>
     <AuthContext.Provider value={authService}>
       <App />
     </AuthContext.Provider>

@@ -1,74 +1,47 @@
+import {
+    ClothesItemEditForm, 
+    CookwareItemEditForm, 
+    EquipmentItemEditForm, 
+    EssentialItemEditForm, 
+    EtcItemEditForm
+} from '../item-edit-form/item-edit-form';
+import { Item, ItemCategory, Items } from '../main/main';
 import styles from './maker.module.css';
 
-const Maker = () => {
-    
+interface MakerProps {
+    items: Items;
+    makeEditForm?: (categoryName: ItemCategory) => void;
+}
+
+
+const Maker = ({items, makeEditForm}: MakerProps) => {
+    const essentialItem = items.filter((item: Item) => (
+        item.category === 'essential'
+    ));
+    const cookwareItem = items.filter((item: Item) => (
+        item.category === 'cookware'
+    ));
+    const equipmentItem = items.filter((item: Item) => (
+        item.category === 'equipment'
+    ));
+    const clothesItem = items.filter((item: Item) => (
+        item.category === 'clothes'
+    ));
+    const etcItem = items.filter((item: Item) => (
+        item.category === 'etc'
+    ));
+
     return (
         <div className={styles.maker}>
             <h1>maker</h1>
             <div className={styles.editor}>
                 <h2>editor</h2>
                 <div className={styles.editor_ctrg}>
-                    <ul className={styles.ctrg__essential}>
-                        <h2>ctrg__essential</h2>
-                        <li>
-                            <form className={styles.editor_form}>
-                                <div className={styles.checkbox__container}>
-                                    <input type="checkbox" id="checkbox"  />    
-                                    <label htmlFor="checkbox">Pick</label>
-                                </div>
-                                <input className={styles.producer} type="text" placeholder="producer"/>
-                                <input className={styles.name} type="text" placeholder="name"/>
-                                <input className={styles.weight} type="number" placeholder="g"/>
-                                <input className={styles.price} type="text" placeholder="₩"/>
-                                <input className={styles.comment} type="text" placeholder="comment"/>
-                            </form></li>
-                        <li><form className={styles.editor_form}>
-                                <div className={styles.checkbox__container}>
-                                    <input type="checkbox" id="checkbox"  />    
-                                    <label htmlFor="checkbox">Pick</label>
-                                </div>
-                                <input className={styles.producer} type="text" placeholder="producer"/>
-                                <input className={styles.name} type="text" placeholder="name"/>
-                                <input className={styles.weight} type="number" placeholder="g"/>
-                                <input className={styles.price} type="text" placeholder="₩"/>
-                                <input className={styles.comment} type="text" placeholder="comment"/>
-                            </form></li>
-                        <li><form className={styles.editor_form}>
-                                <div className={styles.checkbox__container}>
-                                    <input type="checkbox" id="checkbox"  />    
-                                    <label htmlFor="checkbox">Pick</label>
-                                </div>
-                                <input className={styles.producer} type="text" placeholder="producer"/>
-                                <input className={styles.name} type="text" placeholder="name"/>
-                                <input className={styles.weight} type="number" placeholder="g"/>
-                                <input className={styles.price} type="text" placeholder="₩"/>
-                                <input className={styles.comment} type="text" placeholder="comment"/>
-                            </form></li>
-                        </ul>
-                    <ul className={styles.ctrg__cookware}>
-                        <h2>ctrg__cookware</h2>
-                        <li>item</li>
-                        <li>item</li>
-                        <li>item</li>
-                        </ul>
-                    <ul className={styles.ctrg__equiment}>
-                        <h2>ctrg__equiment</h2>
-                        <li>item</li>
-                        <li>item</li>
-                        <li>item</li>
-                        </ul>
-                    <ul className={styles.ctrg__clothes}>
-                        <h2>ctrg__clothes</h2>
-                        <li>item</li>
-                        <li>item</li>
-                        <li>item</li>
-                        </ul>
-                    <ul className={styles.ctrg__etc}>
-                        <h2>ctrg__etc</h2>
-                        <li>item</li>
-                        <li>item</li>
-                        <li>item</li>
-                        </ul>
+                        <EssentialItemEditForm makeEditForm={makeEditForm} items={essentialItem} />
+                        <CookwareItemEditForm makeEditForm={makeEditForm} items={cookwareItem} />
+                        <EquipmentItemEditForm makeEditForm={makeEditForm} items={equipmentItem}/>
+                        <ClothesItemEditForm makeEditForm={makeEditForm} items={clothesItem}/>
+                        <EtcItemEditForm makeEditForm={makeEditForm} items={etcItem}/>
                 </div>
             </div>
             <div className={styles.addForm}>
