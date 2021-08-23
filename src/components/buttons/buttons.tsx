@@ -3,26 +3,39 @@ import styles from './buttons.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { ItemCategory } from '../main/main';
+import { DeleteItem, Item, ItemCategory, MakeItem } from '../main/main';
 
 interface ButtonsProps {
     selector: 'add' | 'delete';
     category?: 'essential' | 'cookware' | 'equipment' | 'clothes' | 'etc';
-    makeEditForm?: (categoryName: ItemCategory) => void;
+    makeEditForm: MakeItem;
+    deleteItem: DeleteItem;
+    item?: Item;
 }
 
-const Buttons = ({selector, category, makeEditForm}: ButtonsProps) => { 
-    const selectorName: string = {selector}.selector;
+const Buttons = ({selector, category, makeEditForm, deleteItem, item}: ButtonsProps) => { 
+    const selectorName = {selector}.selector;
     const categoryName: ItemCategory = {category}.category!;
-    const onAddClick = () => {
-        if(!makeEditForm) {
-            throw new Error(`${makeEditForm}: buttons.tsx`)
+
+    const onClick = () => {
+        if (!makeEditForm) {
+            throw new Error('makeEditForm not found');
         }
-        makeEditForm(categoryName);
+        else if (!item) {
+            return makeEditForm(categoryName);
+        }
+        switch(selectorName) {
+            case 'add':
+                return makeEditForm(categoryName);
+            case 'delete':
+                return deleteItem(item.id);
+            default:
+                throw new Error(`${selectorName} is not supported selector type`);
+        }
     }
 
     return(
-        <button onClick={onAddClick} className={`${styles.button} ${getSelector(selectorName)}` }>
+        <button onClick={onClick} className={`${styles.button} ${getSelector(selectorName)}` }>
         {selectorName === 'add' && <FontAwesomeIcon className={styles.button_icon} icon={faPlus} />}
         {selectorName === 'delete' && <FontAwesomeIcon className={styles.button_icon} icon={faTrashAlt} />}
         </button>

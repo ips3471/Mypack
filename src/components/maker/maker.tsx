@@ -5,16 +5,16 @@ import {
     EssentialItemEditForm, 
     EtcItemEditForm
 } from '../item-edit-form/item-edit-form';
-import { Item, ItemCategory, Items } from '../main/main';
+import { DeleteItem, Item, ItemCategory, Items, MakeItem } from '../main/main';
 import styles from './maker.module.css';
 
 interface MakerProps {
     items: Items;
-    makeEditForm?: (categoryName: ItemCategory) => void;
+    makeEditForm: MakeItem;
+    deleteItem: DeleteItem;
 }
 
-
-const Maker = ({items, makeEditForm}: MakerProps) => {
+const Maker = ({items, makeEditForm, deleteItem}: MakerProps) => {
     const essentialItem = items.filter((item: Item) => (
         item.category === 'essential'
     ));
@@ -37,11 +37,11 @@ const Maker = ({items, makeEditForm}: MakerProps) => {
             <div className={styles.editor}>
                 <h2>editor</h2>
                 <div className={styles.editor_ctrg}>
-                        <EssentialItemEditForm makeEditForm={makeEditForm} items={essentialItem} />
-                        <CookwareItemEditForm makeEditForm={makeEditForm} items={cookwareItem} />
-                        <EquipmentItemEditForm makeEditForm={makeEditForm} items={equipmentItem}/>
-                        <ClothesItemEditForm makeEditForm={makeEditForm} items={clothesItem}/>
-                        <EtcItemEditForm makeEditForm={makeEditForm} items={etcItem}/>
+                        <EssentialItemEditForm makeEditForm={makeEditForm} items={essentialItem} deleteItem={deleteItem} />
+                        <CookwareItemEditForm makeEditForm={makeEditForm} items={cookwareItem} deleteItem={deleteItem} />
+                        <EquipmentItemEditForm makeEditForm={makeEditForm} items={equipmentItem} deleteItem={deleteItem}/>
+                        <ClothesItemEditForm makeEditForm={makeEditForm} items={clothesItem} deleteItem={deleteItem}/>
+                        <EtcItemEditForm makeEditForm={makeEditForm} items={etcItem} deleteItem={deleteItem}/>
                 </div>
             </div>
             <div className={styles.addForm}>

@@ -5,7 +5,7 @@ import styles from './main.module.css';
 import { useState } from 'react';
 
 
-export type ItemCategory = 'essential' | 'cookware' | 'equipment' | 'clothes' | 'etc' | undefined;
+export type ItemCategory = 'essential' | 'cookware' | 'equipment' | 'clothes' | 'etc' | null;
 export type Item = {
     id: any,
     category: ItemCategory,
@@ -17,11 +17,13 @@ export type Item = {
     comment?: string,
 }
 export type Items = Item[];
+export type MakeItem =  (categoryName: ItemCategory) => void;
+export type DeleteItem = (id: any) => void;
 
 const Main = () => {
     const [items, setItems] = useState<Items>([
         {
-            id: 1,
+            id: '1',
             category: 'essential',
             state: true,
             producer: 'producer',
@@ -31,7 +33,7 @@ const Main = () => {
             comment: 'comment',
         },
         {
-            id: 2,
+            id: '2',
             category: 'cookware',
             state: true,
             producer: '',
@@ -41,7 +43,7 @@ const Main = () => {
             comment: '',
         },
         {
-            id: 3,
+            id: '3',
             category: 'etc',
             state: true,
             producer: 'unknown',
@@ -51,7 +53,7 @@ const Main = () => {
             comment: '2days long',
         },
         {
-            id: 4,
+            id: '4',
             category: 'essential',
             state: true,
             producer: 'cumulus',
@@ -61,7 +63,7 @@ const Main = () => {
             comment: '-2c ~ 18c',
         },
         {
-            id: 5,
+            id: '5',
             category: 'equipment',
             state: true,
             producer: '',
@@ -73,7 +75,7 @@ const Main = () => {
     ]);
 
 
-    const makeEditForm = (categoryName: ItemCategory) => {
+    const makeEditForm: MakeItem = (categoryName: ItemCategory) => {
         const itemForm: Item = {
             id: Date.now(),
             category: categoryName,
@@ -89,11 +91,20 @@ const Main = () => {
             return(updated);
         })
     }
+    
+    const deleteItem: DeleteItem = (id: any) => {
+        setItems(items => {
+            const updated = [...items].filter(item =>
+                item.id !== id
+            )
+            return(updated);
+        })
+    }
 
     return(
         <div className={styles.main}>
         <Header />
-        <Maker makeEditForm={makeEditForm} items={items} />
+        <Maker deleteItem={deleteItem} makeEditForm={makeEditForm} items={items} />
         <Overview items={items} />
         </div>
     )
