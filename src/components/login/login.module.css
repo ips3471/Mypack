@@ -1,32 +1,88 @@
-@value lavendar from './common/color.module.css';
+@value button-box-shadow, white, lavendar, darkslategray from '../../common/color.module.css';
+@value main-screen-margin-top, main-screen-width, main-screen-height, app-padding-top, maker-side-padding from '../../common/size.module.css';
 
 .login {
+	width: main-screen-width;
+	height: main-screen-height;
+	margin-top: main-screen-margin-top;
 	display: flex;
-	padding: 4rem;
 	align-items: center;
+	height: 100%;
 }
-.login_welcome {
-	border: 3px solid red;
-	padding-right: 3rem;
+.welcome {
+	width: 25rem;
+	flex: 1 0 30%;
+	height: 100%;
+	background-color: darkslategray;
+	color: white;
+	padding-top: 5rem;
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
 }
+
 .body__container {
 	display: flex;
+	margin-left: 2.2rem;
+	line-height: 2.2rem;
+	padding-top: 1.4rem;
 }
-.body_img {
+.body_logo {
 	padding: 1rem;
+	width: 7rem;
+	height: 7rem;
+	text-align: center;
+}
+.img {
+	font-size: 3.6rem;
+}
+.body_description {
+	padding-left: 0.5rem;
 }
 .body_accent {
 	font-weight: 700;
 }
-.login_signin {
-	border: 10px solid purple;
+
+/* sign-in page*/
+.signin {
+	flex: 1 1 10%;
+	height: 100%;
+	background-color: white;
+	padding: 5rem maker-side-padding;
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
 }
-.login_buttons {
+.signin__container {
+	background-color: #faaa1e25;
+	padding: 1.3rem 0;
+	margin: 0 1rem;
+}
+.signin_title {
+	font-size: 1.2rem;
+	font-weight: 500;
+}
+.signin_title::after {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 1px;
+	background-color: #33395140;
+	margin: 1rem 0;
+}
+.login_btns {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
-.login_button {
-	font-size: 3rem;
-	background-color: yellow;
+.login_btn {
+	font-size: 1.4rem;
+	text-align: left;
+	padding-left: 1.2rem;
+	margin-bottom: 0.8rem;
+}
+.login_btn:hover {
+	color: red;
+	cursor: pointer;
+}
+.login_btn_img {
+	width: 2.5rem;
+	margin-right: 0.5rem;
 }

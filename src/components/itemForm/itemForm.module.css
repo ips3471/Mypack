@@ -1,7 +1,7 @@
 .editor_form {
 	display: flex;
 	flex-direction: row;
-	padding: 0 0 0 1rem;
+	padding: 0 1rem;
 	align-items: center;
 }
 .addForm {
@@ -25,17 +25,20 @@
 .name {
 	width: 10rem;
 }
-.weight {
-	width: 5rem;
-}
 .price {
 	width: 6rem;
+}
+.weight {
+	width: 5rem;
 }
 .comment {
 	width: 12rem;
 }
 
 /* checkbox animation */
+.checkbox__container:hover {
+	opacity: 0.8;
+}
 
 .checkbox__container label {
 	display: inline-block;

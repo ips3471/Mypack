@@ -1,9 +1,19 @@
 import Main from './components/main/main';
-import Login from './login/login';
 import styles from './App.module.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Login from './components/login/login';
+import { useState } from 'react';
 
-function App() {
+interface AppProps {
+  itemRepository: any;
+}
+function App({itemRepository}: AppProps) {
+  const [user, setUser] = useState<any | null>(null);
+  
+  const setUserId = (userId: any) => {
+    setUser(userId);
+    console.log(`user state updated: ${userId}`);
+  }
 
   return (
     <div className={styles.App}>
@@ -11,10 +21,10 @@ function App() {
         <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Login />
+            <Login user={user} setUserId={setUserId}/>
           </Route>
           <Route exact path="/main">
-            <Main />
+            <Main itemRepository={itemRepository} user={user} setUserId={setUserId} />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -24,3 +34,5 @@ function App() {
 }
 
 export default App;
+
+

@@ -1,5 +1,8 @@
 @value side-padding: 4rem;
-@value app-padding-top: 2rem;
+@value app-padding-top: 2.5rem;
 @value app-padding-left: 1rem;
-@value header-btn: 1.1rem;
-@value maker-side-padding: 1rem;
+@value maker-side-padding: 1.7rem;
+@value header-btn: 2.2rem;
+@value main-screen-width: 1350px;
+@value main-screen-height: 50rem;
+@value main-screen-margin-top: 3rem;

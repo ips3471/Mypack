@@ -1,12 +1,16 @@
 @value ghostwhite, lavendar, darkslategray from '../../common/color.module.css';
+@value app-padding-top from '../../common/size.module.css';
 
 .overview {
 	background-color: ghostwhite;
 	border-top-right-radius: 25px;
 	border-bottom-right-radius: 25px;
-	flex: 1 1 5rem;
+	flex: 0 0 20rem;
 	color: darkslategray;
 }
 .items {
 	padding: 1.5rem;
+}
+.title {
+	padding-top: app-padding-top;
 }

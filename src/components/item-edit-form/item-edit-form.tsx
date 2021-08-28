@@ -1,106 +1,74 @@
 import React from 'react';
-import Buttons from '../buttons/buttons';
-import ItemForm from '../itemForm/itemForm';
-import { DeleteItem, Item, ItemCategory, Items, MakeItem } from '../main/main';
-import styles from './item-edit-form.module.css';
+import CategoryComponent from '../category-component/category-component';
+import { DeleteItem, Items, UpdateItem } from '../main/main';
 
 
 export interface ItemEditProps {
     items: Items;
-    makeEditForm: MakeItem;
+    updateChanges: UpdateItem;
     deleteItem: DeleteItem;
 }
 
+const ItemEditForm = ({items, deleteItem, updateChanges}: ItemEditProps) => {
+    const essentialIndex = Object.keys(items).filter(key => items[key].category === 'essential')
+    const essentialItems = essentialIndex.map(index => (
+        items[index]
+    ))
+    const cookwareIndex = Object.keys(items).filter(key => items[key].category === 'cookware')
+    const cookwareItems = cookwareIndex.map(index => (
+        items[index]
+    ))
+    const equipmentIndex = Object.keys(items).filter(key => items[key].category === 'equipment')
+    const equipmentItems = equipmentIndex.map(index => (
+        items[index]
+    ))
+    const clothesIndex = Object.keys(items).filter(key => items[key].category === 'clothes')
+    const clothesItems = clothesIndex.map(index => (
+        items[index]
+    ))
+    const etcIndex = Object.keys(items).filter(key => items[key].category === 'etc')
+    const etcItems = etcIndex.map(index => (
+        items[index]
+    ))
+    
+    return (
+        <>
+        <CategoryComponent 
+        titleName='essential'
+        categoryArray={essentialItems}
+        updateChanges={updateChanges}
+        deleteItem={deleteItem}
+        />
+        <CategoryComponent 
+        titleName='cookware' 
+        categoryArray={cookwareItems}
+        updateChanges={updateChanges}
+        deleteItem={deleteItem}
+        />
+        <CategoryComponent 
+        titleName='equipment' 
+        categoryArray={equipmentItems}
+        updateChanges={updateChanges}
+        deleteItem={deleteItem}
+        />
+        <CategoryComponent 
+        titleName='clothes' 
+        categoryArray={clothesItems}
+        updateChanges={updateChanges}
+        deleteItem={deleteItem}
+        />
+        <CategoryComponent 
+        titleName='etc' 
+        categoryArray={etcItems}
+        updateChanges={updateChanges}
+        deleteItem={deleteItem}
+        />
+        </>
+    )
+}
 
-export const EssentialItemEditForm = ({items, makeEditForm, deleteItem}: ItemEditProps) => (
-            <>
-                <ul className={styles.ctrg__essential}>
-                <h2>ctrg__essential</h2>
-                {
-                    items.map((item: Item) => (
-                    <div className={styles.editor_form__container}>
-                        <ItemForm item={item} />
-                        <Buttons key={item.id} item={item} selector={'delete'} makeEditForm={makeEditForm} deleteItem={deleteItem} />
-                    </div>
-                    ))
-                }
-            </ul>
-            <Buttons makeEditForm={makeEditForm} deleteItem={deleteItem} category={'essential'} selector={'add'} />
-            </>
-);
-        
-export const CookwareItemEditForm = ({items, makeEditForm, deleteItem}: ItemEditProps) => (
-    <>
-        <ul className={styles.ctrg__cookware}>
-        <h2>ctrg__cookware</h2>
-        {
-            items.map((item: Item) => (
-            <div className={styles.editor_form__container}>
-                <ItemForm item={item} />
-                <Buttons key={item.id} item={item} selector={'delete'} makeEditForm={makeEditForm} deleteItem={deleteItem} />
-            </div>
-            ))
-        }
-    </ul>
-    <Buttons makeEditForm={makeEditForm} deleteItem={deleteItem} category={'cookware'} selector={'add'} />
-    </>
-    
-)
 
-export const EquipmentItemEditForm = ({items, makeEditForm, deleteItem}: ItemEditProps) => (
-    <>
-        <ul className={styles.ctrg__equiment}>
-        <h2>ctrg__equiment</h2>
-        {
-            items.map((item: Item) => (
-            <div className={styles.editor_form__container}>
-                <ItemForm item={item} />
-                <Buttons key={item.id} item={item} selector={'delete'} makeEditForm={makeEditForm} deleteItem={deleteItem} />
-            </div>
-            ))
-        }
-    </ul>
-    <Buttons makeEditForm={makeEditForm} deleteItem={deleteItem} category={'equipment'} selector={'add'} />
-    </>
-)
+export default ItemEditForm;
 
-export const ClothesItemEditForm = ({items, makeEditForm, deleteItem}: ItemEditProps) => (
-    <>
-        <ul className={styles.ctrg__clothes}>
-        <h2>ctrg__clothes</h2>
-        {
-            items.map((item: Item) => (
-            <div className={styles.editor_form__container}>
-                <ItemForm item={item} />
-                <Buttons key={item.id} item={item} selector={'delete'} makeEditForm={makeEditForm} deleteItem={deleteItem} />
-            </div>
-            ))
-        }
-    </ul>
-    <Buttons makeEditForm={makeEditForm} deleteItem={deleteItem} category={'clothes'} selector={'add'} />
-    </>
-)
-export const EtcItemEditForm = ({items, makeEditForm, deleteItem}: ItemEditProps) => (
-    <>
-        <ul className={styles.ctrg__etc}>
-        <h2>ctrg__etc</h2>
-        {
-            items.map((item: Item) => (
-            <div className={styles.editor_form__container}>
-                <ItemForm item={item} />
-                <Buttons key={item.id} item={item} selector={'delete'} makeEditForm={makeEditForm} deleteItem={deleteItem} />
-            </div>
-            ))
-        }
-    </ul>
-    <Buttons makeEditForm={makeEditForm} deleteItem={deleteItem} category={'etc'} selector={'add'} />
-    </>
-)
-    
-    
-    
-    
-    
-    
 
 

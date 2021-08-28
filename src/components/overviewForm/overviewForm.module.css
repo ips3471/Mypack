@@ -15,10 +15,6 @@
 	justify-content: center;
 	width: 7.5rem;
 }
-.item_state {
-	width: 3rem;
-	color: forestgreen;
-}
 .inactive {
 	color: darkslategray;
 }

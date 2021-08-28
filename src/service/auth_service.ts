@@ -11,9 +11,11 @@ interface IAuthService {
 
 class AuthService implements IAuthService {
     login(provider: firebase.auth.AuthProvider) {
+        console.log(`Auth-service got provider: ${provider}`);
         return auth.signInWithPopup(provider);
     }
     logout() {
+        console.log('sign out');
         auth.signOut();
     }
     onAuthChange(onUserChanged: any) {

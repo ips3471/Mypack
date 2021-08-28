@@ -1,0 +1,17 @@
+@value maker-side-padding from '../../common/size.module.css';
+
+.editor_ctrg {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-flow: row wrap;
+}
+.categories {
+	display: flex;
+	flex-direction: column;
+}
+.editor_form__container {
+	display: flex;
+	flex-direction: column;
+	padding-right: maker-side-padding;
+}

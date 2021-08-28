@@ -1,6 +1,8 @@
 @value side-padding from '../../common/size.module.css';
 
 .main {
+	width: 1350px;
 	display: flex;
-	height: 45rem;
+	height: 50rem;
+	margin-top: 3rem;
 }

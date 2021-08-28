@@ -1,11 +1,11 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
 interface Iproviders {
   Google: firebase.auth.AuthProvider;
   Github: firebase.auth.AuthProvider;
 }
-
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -15,10 +15,12 @@ const firebaseConfig = {
 };
   // Initialize Firebase
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-
+export const auth = firebase.auth();
 export const Proviers: Iproviders = {
   Google: new firebase.auth.GoogleAuthProvider(),
   Github: new firebase.auth.GithubAuthProvider(),
 }
-export const auth = firebase.auth();
+
+export const database = firebase.database();
+
 export default firebaseApp;

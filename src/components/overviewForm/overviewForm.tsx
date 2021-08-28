@@ -6,15 +6,15 @@ interface OverviewFormProps {
     item: Item;
 }
 
-const OverviewForm = ({item}: OverviewFormProps) => (
+const OverviewForm = ({item}: OverviewFormProps) => {
+    return (
     <li className={styles.item}>
-        <span className={styles.item_state}>{item.state}</span>
         <div className={styles.item_info_container}>
             <span className={styles.item_producer}>{item.producer}</span>
             <span className={styles.item_name}>{item.name}</span>
-        </div>
+    </div>
         <span className={styles.item_weight}>{item.weight}</span>
     </li>
-    );
+    )};
 
 export default OverviewForm;

@@ -2,109 +2,68 @@ import Header from '../header/header';
 import Maker from '../maker/maker';
 import Overview from '../overview/overview';
 import styles from './main.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import ItemRepository, { UserId }  from '../../service/item-repository';
 
-
-export type ItemCategory = 'essential' | 'cookware' | 'equipment' | 'clothes' | 'etc' | null;
+export type ItemCategory = 'essential' | 'cookware' | 'equipment' | 'clothes' | 'etc' ;
 export type Item = {
     id: any,
     category: ItemCategory,
     state: boolean,
-    producer?: string,
+    producer: string,
     name: string,
-    weight?: number | string,
-    price?: number | string,
-    comment?: string,
+    weight: string,
+    price: string,
+    comment: string,
 }
-export type Items = Item[];
-export type MakeItem =  (categoryName: ItemCategory) => void;
-export type DeleteItem = (id: any) => void;
+export type Items = {
+    [key: string]: Item;
+}
+export type DeleteItem = (item: Item) => void;
+export type UpdateItem = (item: Item) => void;
+interface MainProps {
+    itemRepository: ItemRepository;
+    user: UserId;
+    setUserId: any;
+}
+const Main = ({setUserId, itemRepository, user}: MainProps) => {
+    const [items, setItems] = useState<Items>({});
+    // console.log(user);
 
-const Main = () => {
-    const [items, setItems] = useState<Items>([
-        {
-            id: '1',
-            category: 'essential',
-            state: true,
-            producer: 'producer',
-            name: 'productName',
-            weight: 1000,
-            price: 420000,
-            comment: 'comment',
-        },
-        {
-            id: '2',
-            category: 'cookware',
-            state: true,
-            producer: '',
-            name: '',
-            weight: '',
-            price: '',
-            comment: '',
-        },
-        {
-            id: '3',
-            category: 'etc',
-            state: true,
-            producer: 'unknown',
-            name: 'poewrbank 20000mAh',
-            weight: '500',
-            price: '70,000',
-            comment: '2days long',
-        },
-        {
-            id: '4',
-            category: 'essential',
-            state: true,
-            producer: 'cumulus',
-            name: 'quilt 350',
-            weight: '600',
-            price: '240,000',
-            comment: '-2c ~ 18c',
-        },
-        {
-            id: '5',
-            category: 'equipment',
-            state: true,
-            producer: '',
-            name: '',
-            weight: '',
-            price: '',
-            comment: '',
+    useEffect(() => {
+        function updateCallback(val: Items, userId: UserId) {
+            setItems(val);
+            setUserId(userId);
+            console.log(`sync done! items & userId${userId}`);
         }
-    ]);
+        const sync = itemRepository.updateItems(user, updateCallback);
+        return () => { sync() };
+    }, [user, itemRepository, setUserId])
 
-
-    const makeEditForm: MakeItem = (categoryName: ItemCategory) => {
-        const itemForm: Item = {
-            id: Date.now(),
-            category: categoryName,
-            state: false,
-            producer: '',
-            name: '',
-            weight: '',
-            price: '',
-            comment: '',
-        }
+    const deleteItem: DeleteItem = item => {
         setItems(items => {
-            const updated = [...items, itemForm]
-            return(updated);
+        const updated = {...items};
+        delete updated[item.id];
+        return updated;
         })
+        // remove item from firebase repository
+        itemRepository.deleteItem(user, item);
     }
-    
-    const deleteItem: DeleteItem = (id: any) => {
+
+    const updateChanges: UpdateItem = item => {
         setItems(items => {
-            const updated = [...items].filter(item =>
-                item.id !== id
-            )
-            return(updated);
+            const updated = {...items};
+            updated[item.id] = item;
+            return updated;
         })
+        // save item in firebase repository
+        itemRepository.saveItems(user, item);
     }
 
     return(
         <div className={styles.main}>
-        <Header />
-        <Maker deleteItem={deleteItem} makeEditForm={makeEditForm} items={items} />
+        <Header user={user} setUserId={setUserId} />
+        <Maker deleteItem={deleteItem} updateChanges={updateChanges} items={items} />
         <Overview items={items} />
         </div>
     )

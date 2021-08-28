@@ -1,51 +1,22 @@
-import {
-    ClothesItemEditForm, 
-    CookwareItemEditForm, 
-    EquipmentItemEditForm, 
-    EssentialItemEditForm, 
-    EtcItemEditForm
-} from '../item-edit-form/item-edit-form';
-import { DeleteItem, Item, ItemCategory, Items, MakeItem } from '../main/main';
+import ItemEditForm from '../item-edit-form/item-edit-form';
+import { DeleteItem, Items, UpdateItem } from '../main/main';
 import styles from './maker.module.css';
 
 interface MakerProps {
     items: Items;
-    makeEditForm: MakeItem;
     deleteItem: DeleteItem;
+    updateChanges: UpdateItem;
 }
 
-const Maker = ({items, makeEditForm, deleteItem}: MakerProps) => {
-    const essentialItem = items.filter((item: Item) => (
-        item.category === 'essential'
-    ));
-    const cookwareItem = items.filter((item: Item) => (
-        item.category === 'cookware'
-    ));
-    const equipmentItem = items.filter((item: Item) => (
-        item.category === 'equipment'
-    ));
-    const clothesItem = items.filter((item: Item) => (
-        item.category === 'clothes'
-    ));
-    const etcItem = items.filter((item: Item) => (
-        item.category === 'etc'
-    ));
+const Maker = ({items, deleteItem, updateChanges}: MakerProps) => {
 
     return (
         <div className={styles.maker}>
-            <h1>maker</h1>
+            <h1 className={styles.title}>나만의 장비를 관리해보세요</h1>
             <div className={styles.editor}>
-                <h2>editor</h2>
                 <div className={styles.editor_ctrg}>
-                        <EssentialItemEditForm makeEditForm={makeEditForm} items={essentialItem} deleteItem={deleteItem} />
-                        <CookwareItemEditForm makeEditForm={makeEditForm} items={cookwareItem} deleteItem={deleteItem} />
-                        <EquipmentItemEditForm makeEditForm={makeEditForm} items={equipmentItem} deleteItem={deleteItem}/>
-                        <ClothesItemEditForm makeEditForm={makeEditForm} items={clothesItem} deleteItem={deleteItem}/>
-                        <EtcItemEditForm makeEditForm={makeEditForm} items={etcItem} deleteItem={deleteItem}/>
+                    <ItemEditForm items={items} deleteItem={deleteItem} updateChanges={updateChanges}    />
                 </div>
-            </div>
-            <div className={styles.addForm}>
-                <h2>addForm</h2>
             </div>
         </div>
     )

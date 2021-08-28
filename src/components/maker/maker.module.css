@@ -1,17 +1,21 @@
 @value orange, maker-gradient, white, lavendar, darkslategray from '../../common/color.module.css';
-@value maker-side-padding from '../../common/size.module.css';
+@value app-padding-top, maker-side-padding from '../../common/size.module.css';
 
 .maker {
 	background-color: white;
-	flex: 1 1 25rem;
+	flex: 0 0 56rem;
 	display: flex;
 	flex-direction: column;
 }
 .editor {
-	flex: 1 1 80%;
+	flex: 1 1 85%;
+	overflow-y: scroll;
+	margin: 0.5rem 0 2rem 0;
+	padding-left: maker-side-padding;
 }
-
-.addForm {
-	background-color: lightgreen;
-	flex: 1 1 10%;
+.editor::-webkit-scrollbar {
+	display: none;
+}
+.title {
+	padding-top: app-padding-top;
 }
