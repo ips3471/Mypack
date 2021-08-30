@@ -1,12 +1,12 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 import { AuthContext } from '../..';
 import styles from './header.module.css';
 import { faListUl, faSignOutAlt, faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Header = ({setUserId, user}: any) => {
+const Header = memo(({setUserId, user}: any) => {
+    console.log('header update');
     const authService = useContext(AuthContext);
-
     const onLogoutClick = () => {
         if(user) {
             authService.logout();
@@ -41,6 +41,6 @@ const Header = ({setUserId, user}: any) => {
                 </li>
             </ul>
         </div>
-    )};
+    )});
 
 export default Header;

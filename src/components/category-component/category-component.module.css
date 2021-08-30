@@ -1,10 +1,20 @@
 @value maker-side-padding from '../../common/size.module.css';
+@value container-shadow from '../../common/color.module.css';
 
 .editor_ctrg {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	flex-flow: row wrap;
+}
+.category_title {
+	margin-left: maker-side-padding;
+	margin-bottom: 0.4rem;
+	font-size: 1.2rem;
+	font-weight: 800;
+}
+.category_desc {
+	font-size: 1.1rem;
 }
 .categories {
 	display: flex;
@@ -13,5 +23,10 @@
 .editor_form__container {
 	display: flex;
 	flex-direction: column;
-	padding-right: maker-side-padding;
+	margin-bottom: 0.8rem;
+}
+.editor_form__container:hover {
+	transform: scale(1.01);
+	transition: all 300ms ease-out;
+	box-shadow: container-shadow;
 }

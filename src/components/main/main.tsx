@@ -28,7 +28,6 @@ interface MainProps {
 }
 const Main = ({setUserId, itemRepository, user}: MainProps) => {
     const [items, setItems] = useState<Items>({});
-    // console.log(user);
 
     useEffect(() => {
         function updateCallback(val: Items, userId: UserId) {
@@ -46,7 +45,6 @@ const Main = ({setUserId, itemRepository, user}: MainProps) => {
         delete updated[item.id];
         return updated;
         })
-        // remove item from firebase repository
         itemRepository.deleteItem(user, item);
     }
 
@@ -56,7 +54,6 @@ const Main = ({setUserId, itemRepository, user}: MainProps) => {
             updated[item.id] = item;
             return updated;
         })
-        // save item in firebase repository
         itemRepository.saveItems(user, item);
     }
 

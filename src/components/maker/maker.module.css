@@ -8,10 +8,8 @@
 	flex-direction: column;
 }
 .editor {
-	flex: 1 1 85%;
 	overflow-y: scroll;
-	margin: 0.5rem 0 2rem 0;
-	padding-left: maker-side-padding;
+	margin: 0.5rem maker-side-padding 2rem maker-side-padding;
 }
 .editor::-webkit-scrollbar {
 	display: none;

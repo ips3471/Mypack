@@ -7,10 +7,19 @@
 	border-bottom-right-radius: 25px;
 	flex: 0 0 20rem;
 	color: darkslategray;
+	display: flex;
+	flex-direction: column;
+}
+.overview__container {
+	overflow-y: scroll;
+	margin: 0.5rem 0 2rem 0;
 }
 .items {
 	padding: 1.5rem;
 }
 .title {
 	padding-top: app-padding-top;
+}
+.overview__container::-webkit-scrollbar {
+	display: none;
 }

@@ -21,7 +21,7 @@ function App({itemRepository}: AppProps) {
         <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Login user={user} setUserId={setUserId}/>
+            <Login setUserId={setUserId}/>
           </Route>
           <Route exact path="/main">
             <Main itemRepository={itemRepository} user={user} setUserId={setUserId} />

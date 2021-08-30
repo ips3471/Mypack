@@ -6,4 +6,4 @@
 @value white: #ffffff;
 @value ghostwhite: #f7f7ff;
 @value maker-gradient: linear-gradient(90deg, rgba(51,57,81,1) 0%, rgba(247,247,255,1) 100%);
-@value button-box-shadow: 0 5px 15px #193047;
+@value container-shadow: 0 2px 5px 0 rgba(25,48,71,0.4);

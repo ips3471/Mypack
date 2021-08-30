@@ -1,0 +1,12 @@
+.overviewChart {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5rem 1.5rem;
+	width: 100%;
+}
+
+.totalWeight {
+	margin-top: 0.5rem;
+}

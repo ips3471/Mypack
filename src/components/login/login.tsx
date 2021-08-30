@@ -11,10 +11,9 @@ import { faCampground, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 
 interface LoginProps {
     setUserId: any;
-    user: any;
 }
     
-const Login = ({setUserId, user}: LoginProps) => { 
+const Login = ({setUserId}: LoginProps) => { 
     const authService = useContext(AuthContext);
     const history = useHistory();
     useEffect(() => {
@@ -34,24 +33,10 @@ const Login = ({setUserId, user}: LoginProps) => {
         }
     }, [setUserId, authService, history])
     
-    // const goToMain = (uid: any) => {
-    //     if(!user) {
-    //         return null;
-    //     }
-    //     history.push({
-    //         pathname: '/main',
-    //         state: {id: uid},
-    //     })
-    //     console.log(history);
-    // }
 
     const onLoginClick = async (provider: firebase.auth.AuthProvider) => {
-        // const data = 
         await authService.login(provider);
-        // const userId = data.user.uid;
-        // setUserId(userId);
         console.log(`onLoginClick => Auth-provider called for login`);
-        // return goToMain(userId);
     }
 
     return (
@@ -77,7 +62,6 @@ const Login = ({setUserId, user}: LoginProps) => {
                         본인의 장비 리스트를 다른 사람에게 공유해보세요
                     </p>
                 </div>
-
             </div>
 
         </div>
