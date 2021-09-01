@@ -4,7 +4,6 @@
 .login {
 	width: main-screen-width;
 	height: main-screen-height;
-	margin-top: main-screen-margin-top;
 	display: flex;
 	align-items: center;
 	height: 100%;
