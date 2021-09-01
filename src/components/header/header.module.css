@@ -36,3 +36,9 @@
 .btn:hover {
 	color: mediumslateblue;
 }
+.btn_pack:hover::after {
+	content: '준비중인 컨텐츠입니다';
+	position: absolute;
+	font-size: 0.5rem;
+	color: tomato;
+}

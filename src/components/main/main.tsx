@@ -30,10 +30,10 @@ const Main = ({setUserId, itemRepository, user}: MainProps) => {
     const [items, setItems] = useState<Items>({});
 
     useEffect(() => {
-        function updateCallback(val: Items, userId: UserId) {
+        function updateCallback(val: Items) {
             setItems(val);
-            setUserId(userId);
-            console.log(`sync done! items & userId${userId}`);
+            // setUserId(userId);
+            console.log(`sync done! items`);
         }
         const sync = itemRepository.updateItems(user, updateCallback);
         return () => { sync() };

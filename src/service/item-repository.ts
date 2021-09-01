@@ -14,7 +14,7 @@ export class ItemRepository {
         const ref = database.ref(`${userId}/items`);
         ref.on('value', (snapshot) => {
             const val = snapshot.val();
-            val && updateCallback(val, userId);
+            val && updateCallback(val);
             val && console.log('update done');
         })
         return () => ref.off();

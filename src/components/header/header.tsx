@@ -29,13 +29,13 @@ const Header = memo(({setUserId, user}: any) => {
                         </button>
                     </li>
                     <li className={styles.btn_container}>
-                        <button className={styles.btn}>
+                        <button className={`${styles.btn} ${styles.btn_pack}`}>
                             <FontAwesomeIcon className={styles.btn__icon} icon={faSuitcaseRolling} />
                         </button>
                     </li>
                 </div>
                 <li className={`${styles.btn_container} ${styles.logout_btn}`}>
-                    <button onClick={onLogoutClick} className={styles.btn}>
+                    <button onClick={onLogoutClick} className={`${styles.btn} ${styles.btn_logout}`}>
                         <FontAwesomeIcon className={styles.btn__icon} icon={faSignOutAlt} />
                     </button>
                 </li>
